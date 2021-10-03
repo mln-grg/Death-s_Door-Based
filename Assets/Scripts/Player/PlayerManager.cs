@@ -6,6 +6,7 @@ namespace MilanGeorge
         PlayerMovement playerMovement;
         InputManager inputManager;
         AnimatorManager animatorManager;
+        PlayerCombatManager playerCombatManager;
 
         Rigidbody playerRb;
         [SerializeField] Transform cameraObject;
@@ -29,6 +30,7 @@ namespace MilanGeorge
             inputManager = GetComponent<InputManager>();
             animatorManager = GetComponent<AnimatorManager>();
             playerRb = GetComponent<Rigidbody>();
+            playerCombatManager = GetComponent<PlayerCombatManager>();
         }
 
         private void Start()
@@ -40,6 +42,7 @@ namespace MilanGeorge
         {
             inputManager.HandleAllMovementInput();
             playerMovement.HandleAllMovement();
+            //playerCombatManager.HandleShooting();
 
         }
         private void LateUpdate()
@@ -118,6 +121,11 @@ namespace MilanGeorge
         public float GetFallingSpeed()
         {
             return fallingSpeed;
+        }
+
+        public bool GetIsShooting()
+        {
+            return inputManager.GetIsShooting();
         }
         #endregion
 
