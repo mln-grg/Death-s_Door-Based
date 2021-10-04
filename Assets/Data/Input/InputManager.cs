@@ -13,7 +13,7 @@ namespace MilanGeorge
         float horizontalInput;
         float verticalInput;
         float moveAmount;
-        bool isShooting;
+        bool lightAttack;
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
@@ -45,21 +45,18 @@ namespace MilanGeorge
         private void HandleRollInput()
         {
             isDodging = playerControls.PlayerActions.Dodge.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-
-
-
         }
 
-        private void HandleShootingInput()
+        private void HandleAttackInput()
         {
-            isShooting = playerControls.PlayerActions.Shoot.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+            lightAttack = playerControls.PlayerActions.LightAttack.phase ==UnityEngine.InputSystem.InputActionPhase.Started ;
         }
 
-        public void HandleAllMovementInput()
+        public void HandleAllInput()
         {
             HandleRollInput();
             HandleMovementInput();
-            HandleShootingInput();
+            HandleAttackInput();
         }
 
         public float GetHorizontalInput()
@@ -78,9 +75,13 @@ namespace MilanGeorge
         {
             return isDodging;
         }
-        public bool GetIsShooting()
+        public void resetBool()
         {
-            return isShooting;
+            lightAttack = false;
+        }
+        public bool GetLightAttack()
+        {
+            return lightAttack;
         }
     }
 }

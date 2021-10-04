@@ -7,6 +7,8 @@ namespace MilanGeorge
         InputManager inputManager;
         AnimatorManager animatorManager;
         PlayerCombatManager playerCombatManager;
+        WeaponSlotManager weaponSlotManager;
+        PlayerInventory playerInventory;
 
         Rigidbody playerRb;
         [SerializeField] Transform cameraObject;
@@ -31,6 +33,8 @@ namespace MilanGeorge
             animatorManager = GetComponent<AnimatorManager>();
             playerRb = GetComponent<Rigidbody>();
             playerCombatManager = GetComponent<PlayerCombatManager>();
+            playerInventory = GetComponent<PlayerInventory>();
+            weaponSlotManager = GetComponent<WeaponSlotManager>();
         }
 
         private void Start()
@@ -40,14 +44,15 @@ namespace MilanGeorge
         }
         private void FixedUpdate()
         {
-            inputManager.HandleAllMovementInput();
+            inputManager.HandleAllInput();
             playerMovement.HandleAllMovement();
-            //playerCombatManager.HandleShooting();
+            playerCombatManager.HandleLightAttack();
 
         }
         private void LateUpdate()
         {
             CameraManager.instance.FollowTarget(transform.position);
+            //inputManager.resetBool();
         }
 
         #region Getters
@@ -123,9 +128,14 @@ namespace MilanGeorge
             return fallingSpeed;
         }
 
-        public bool GetIsShooting()
+        public bool GetLightAttack()
         {
-            return inputManager.GetIsShooting();
+           return inputManager.GetLightAttack();
+        }
+
+        public WeaponItem GetRightHandWeapon()
+        {
+            return playerInventory.GetRightHandWeapon();
         }
         #endregion
 

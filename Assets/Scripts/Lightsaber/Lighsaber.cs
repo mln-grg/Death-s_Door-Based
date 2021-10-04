@@ -1,4 +1,4 @@
-﻿using Assets.Scripts;
+﻿/*using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -163,3 +163,4 @@ public class Lighsaber : MonoBehaviour
         rigidbody.AddForce(newNormal, ForceMode.Impulse);
     }
 }
+*/

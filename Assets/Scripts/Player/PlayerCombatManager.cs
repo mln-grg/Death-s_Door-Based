@@ -6,19 +6,23 @@ namespace MilanGeorge
     {
         PlayerManager playerManager;
 
-        const string Shoot = "Shooting";
-
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
         }
-        public void HandleShooting()
+        public void HandleLightAttack()
         {
-            if (playerManager.GetIsInteracting())
+            if (!playerManager.GetLightAttack())
                 return;
 
-            if (playerManager.GetIsShooting())
-                playerManager.PlayTargetAnimation(Shoot, false);
+            playerManager.PlayTargetAnimation(playerManager.GetRightHandWeapon().attack1,true);
+
+
+        }
+
+        public void HandleAllAttacks()
+        {
+            HandleLightAttack();
         }
     }
 }

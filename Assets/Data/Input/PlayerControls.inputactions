@@ -140,7 +140,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Shoot",
+                    "name": "LightAttack",
                     "type": "Button",
                     "id": "4be84665-ba8d-4d6c-ba17-747d52448b50",
                     "expectedControlType": "Button",
@@ -173,23 +173,23 @@
                 },
                 {
                     "name": "",
-                    "id": "252120ee-9994-42e7-81e2-8009cd8bd41a",
-                    "path": "<Gamepad>/rightShoulder",
+                    "id": "9f84b785-be74-4fb3-ac62-3e341e107638",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b064047a-971a-4eec-a726-e37a87859dd0",
-                    "path": "<Mouse>/leftButton",
+                    "id": "61dc0968-36dd-4d52-9575-21b6c320bb37",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
