@@ -53,6 +53,7 @@ namespace MilanGeorge
         public void ShowEquippedWeapon(bool value)
         {
             EquippedWeapon.SetActive(value);
+            EquippedWeapon.GetComponentInChildren<WeaponTrail>().enabled = false;
             EquippedWeapon.GetComponentInChildren<BoxCollider>().enabled = false;
         }
     }
