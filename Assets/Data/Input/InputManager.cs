@@ -14,6 +14,7 @@ namespace MilanGeorge
         float verticalInput;
         float moveAmount;
         bool lightAttack;
+        bool heavyAttack;
         private void Awake()
         {
             animatorManager = GetComponent<AnimatorManager>();
@@ -49,7 +50,8 @@ namespace MilanGeorge
 
         private void HandleAttackInput()
         {
-            lightAttack = playerControls.PlayerActions.LightAttack.phase ==UnityEngine.InputSystem.InputActionPhase.Started ;
+            lightAttack = playerControls.PlayerActions.LightAttack.phase ==UnityEngine.InputSystem.InputActionPhase.Started;
+            heavyAttack = playerControls.PlayerActions.HeavyAttack.phase == UnityEngine.InputSystem.InputActionPhase.Started;
         }
 
         public void HandleAllInput()
@@ -82,6 +84,11 @@ namespace MilanGeorge
         public bool GetLightAttack()
         {
             return lightAttack;
+        }
+
+        public bool GetHeavyAttack()
+        {
+            return heavyAttack;
         }
     }
 }

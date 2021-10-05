@@ -14,8 +14,12 @@ namespace MilanGeorge
         public bool hasWeaponforOffhand;
 
         [Header("OneHandedAttackAnimations")]
-        public string attack1;
-        public string attack2;
-        public string attack3;
+
+        public int LightcomboCount;
+        public int HeavycomboCount;
+
+        public string[] Lightattacks;
+        public string[] Heavyattacks;
+    
     }
 }

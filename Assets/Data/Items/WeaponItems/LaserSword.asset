@@ -19,6 +19,13 @@ MonoBehaviour:
   WeaponModelPrefabEquipped: {fileID: 0}
   isUnarmed: 0
   hasWeaponforOffhand: 0
-  attack1: 2Hand-Sword-Attack1
-  attack2: 
-  attack3: 
+  LightcomboCount: 3
+  HeavycomboCount: 3
+  Lightattacks:
+  - Attack1
+  - Attack2
+  - Attack3
+  Heavyattacks:
+  - Attack1
+  - Attack2
+  - Attack3

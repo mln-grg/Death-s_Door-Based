@@ -46,7 +46,7 @@ namespace MilanGeorge
         {
             inputManager.HandleAllInput();
             playerMovement.HandleAllMovement();
-            playerCombatManager.HandleLightAttack();
+            playerCombatManager.HandleAllAttacks();
 
         }
         private void LateUpdate()
@@ -132,11 +132,20 @@ namespace MilanGeorge
         {
            return inputManager.GetLightAttack();
         }
-
+        public bool GetHeavyAttack()
+        {
+            return inputManager.GetHeavyAttack();
+        }
         public WeaponItem GetRightHandWeapon()
         {
             return playerInventory.GetRightHandWeapon();
         }
+
+        public bool GetCanDoCombo()
+        {
+            return animatorManager.animator.GetBool("canDoCombo");
+        }
+
         #endregion
 
         #region Setters
@@ -148,6 +157,16 @@ namespace MilanGeorge
         {
             isGrounded = value;
         }
+
+        public void SetCanDoCombo()
+        {
+            animatorManager.animator.SetBool("canDoCombo", true);
+        }
+        public void ResetCanDoCombo()
+        {
+            animatorManager.animator.SetBool("canDoCombo",false);
+        }
+
         #endregion
 
         #region Actions
