@@ -20,6 +20,9 @@ namespace MilanGeorge
 
         public string[] Lightattacks;
         public string[] Heavyattacks;
+
+        [Header("Other Animations")]
+        public string Sheathe;
     
     }
 }

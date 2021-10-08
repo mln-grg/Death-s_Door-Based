@@ -15,7 +15,6 @@ namespace MilanGeorge
         private void HandleLightCombo()
         {
             bool attackPerformed = false;
-
             if (playerManager.GetCanDoCombo())
             {
                 for(int i=0; i< playerManager.GetRightHandWeapon().LightcomboCount; i++)
@@ -25,6 +24,7 @@ namespace MilanGeorge
                         playerManager.PlayTargetAnimation(playerManager.GetRightHandWeapon().Lightattacks[0], true);
                         lastAttack = playerManager.GetRightHandWeapon().Lightattacks[0];
                         attackPerformed = true;
+
                         break;
                     }
                     else if(lastAttack == playerManager.GetRightHandWeapon().Lightattacks[i])
@@ -32,6 +32,7 @@ namespace MilanGeorge
                         playerManager.PlayTargetAnimation(playerManager.GetRightHandWeapon().Lightattacks[i+1], true);
                         lastAttack = playerManager.GetRightHandWeapon().Lightattacks[i + 1];
                         attackPerformed = true;
+
                         break;
                     }
                     
@@ -41,6 +42,7 @@ namespace MilanGeorge
                 {
                     playerManager.PlayTargetAnimation(playerManager.GetRightHandWeapon().Lightattacks[0], true);
                     lastAttack = playerManager.GetRightHandWeapon().Lightattacks[0];
+
                 }
             }
         }
@@ -90,6 +92,7 @@ namespace MilanGeorge
             }
             playerManager.PlayTargetAnimation(playerManager.GetRightHandWeapon().Lightattacks[0], true);
             lastAttack = playerManager.GetRightHandWeapon().Lightattacks[0];
+
 
         }
 

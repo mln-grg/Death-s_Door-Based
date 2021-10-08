@@ -19,7 +19,9 @@ namespace MilanGeorge
         [SerializeField] float minTimeNeededToFall = 1;
         float inAirTimer = 0f;
 
-        
+        [Header("Dodge")]
+        [SerializeField] float dodgeInterval = 0f;
+        float nextDodge =0f;
         private void Awake()
         {
             playerRb = GetComponent<Rigidbody>();
@@ -63,16 +65,22 @@ namespace MilanGeorge
             if (playerManager.GetIsInteracting())
                 return;
 
-            moveDirection = GetDirection();
 
-            if (playerManager.GetMoveAmount() > 0)
+            if (Time.time >= nextDodge)
             {
-                playerManager.PlayTargetAnimation(DodgeRoll, true);
-                Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-                transform.rotation = targetRotation;
+                nextDodge = Time.time + dodgeInterval;
+
+                moveDirection = GetDirection();
+
+                if (playerManager.GetMoveAmount() > 0)
+                {
+                    playerManager.PlayTargetAnimation(DodgeRoll, true);
+                    Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+                    transform.rotation = targetRotation;
+                }
+                else
+                    playerManager.PlayTargetAnimation(DodgeBack, true);
             }
-            else
-                playerManager.PlayTargetAnimation(DodgeBack, true);
 
         }
 
@@ -88,6 +96,9 @@ namespace MilanGeorge
 
         void HandleFallingAndLanding()
         {
+
+            //Animations Disabled[Buggy Behaviour fix later!]
+
             RaycastHit hit;
             Vector3 rayOrigin;
             Vector3 targetPosition;
@@ -98,8 +109,8 @@ namespace MilanGeorge
             {
                 if (!playerManager.GetIsInteracting())
                 {
-                    if (inAirTimer > minTimeNeededToFall)
-                        playerManager.PlayTargetAnimation(Falling, true);
+                    /*if (inAirTimer > minTimeNeededToFall)
+                        playerManager.PlayTargetAnimation(Falling, true);*/
                 }
 
                 inAirTimer += Time.deltaTime;
@@ -112,10 +123,10 @@ namespace MilanGeorge
                 
                 if(!playerManager.GetIsGrounded() /*&& playerManager.GetIsInteracting()*/)
                 {
-                    if (inAirTimer >= minTimeNeededToLand)
+                    /*if (inAirTimer >= minTimeNeededToLand)
                         playerManager.PlayTargetAnimation(Landing, true);
                     else
-                        playerManager.PlayTargetAnimation("Empty", false);
+                        playerManager.PlayTargetAnimation("Empty", false);*/
 
                 }
                 Vector3 RaycastHitPoint = hit.point;
@@ -129,7 +140,7 @@ namespace MilanGeorge
                 playerManager.SetIsGrounded(false);
             }
 
-            /*if (playerManager.GetIsGrounded())
+            if (playerManager.GetIsGrounded())
             {
                 if (playerManager.GetIsInteracting() || playerManager.GetMoveAmount() > 0)
                 {
@@ -137,7 +148,7 @@ namespace MilanGeorge
                 }
                 else
                     transform.position = targetPosition;
-            }*/
+            }
 
         }
         public void HandleAllMovement()

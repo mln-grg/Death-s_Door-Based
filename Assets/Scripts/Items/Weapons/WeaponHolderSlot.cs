@@ -72,5 +72,10 @@ namespace MilanGeorge
             if (currentWeapon!= null)
                 currentWeapon.SetActive(value);
         }
+
+        public GameObject GetCurrentWeaponModel()
+        {
+            return currentWeapon;
+        }
     }
 }
